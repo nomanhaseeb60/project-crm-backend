@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 @Entity
 @Table(name = "employee")
@@ -39,9 +41,9 @@ public class Employee {
 	private String email;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name="usuarios_roles", joinColumns= @JoinColumn(name="usuario_id"),
+	@JoinTable(name="users_roles", joinColumns= @JoinColumn(name="user_id"),
 	inverseJoinColumns=@JoinColumn(name="role_id"),
-	uniqueConstraints= {@UniqueConstraint(columnNames= {"usuario_id", "role_id"})})
+	uniqueConstraints= {@UniqueConstraint(columnNames= {"user_id", "role_id"})})
 	private List<Role> roles;
 
 	public Long getId() {
