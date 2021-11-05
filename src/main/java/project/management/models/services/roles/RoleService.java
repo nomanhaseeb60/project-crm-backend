@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import project.management.models.dao.IRoleDao;
+import project.management.models.dao.role.*;
 import project.management.models.entities.Role;
 
 @Service

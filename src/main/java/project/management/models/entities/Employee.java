@@ -26,7 +26,7 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(unique = true, length = 20)
+	@Column(unique = true)
 	private String username;
 
 	@Column(length = 60)
@@ -37,8 +37,6 @@ public class Employee {
 	private String name;
 	private String surname;
 	
-	@Column(unique = true)
-	private String email;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name="users_roles", joinColumns= @JoinColumn(name="user_id"),
@@ -92,14 +90,6 @@ public class Employee {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public List<Role> getRoles() {

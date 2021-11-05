@@ -15,6 +15,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import project.management.models.entities.Employee;
 import project.management.models.entities.Role;
-import project.management.models.services.IEmployeeService;
+import project.management.models.services.employee.IEmployeeService;
 import project.management.models.services.roles.IRoleService;
 
 @CrossOrigin(origins = { "http://localhost:4200" })
@@ -36,6 +37,9 @@ import project.management.models.services.roles.IRoleService;
 public class EmpleadoController {
 	@Autowired
 	private IEmployeeService empleadoService;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Autowired
 	private IRoleService roleService;
@@ -57,7 +61,8 @@ public class EmpleadoController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 		}
 		try {
-
+			employee.setEnabled(true);
+			employee.setPassword(passwordEncoder.encode(employee.getPassword()));
 			newEmployee = empleadoService.save(employee);
 		} catch (DataAccessException e) {
 			response.put("message", "Error while inserting in database");
@@ -65,8 +70,8 @@ public class EmpleadoController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		response.put("message", "The employee has been registered successfully");
-		response.put("employee", employee);
+		response.put("message", "The employee " + employee.getName() + " has been registered successfully");
+		response.put("error", false);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 

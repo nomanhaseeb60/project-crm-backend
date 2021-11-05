@@ -11,7 +11,7 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.stereotype.Component;
 
 import project.management.models.entities.Employee;
-import project.management.models.services.IEmployeeService;
+import project.management.models.services.employee.IEmployeeService;
 
 @Component
 public class AditionalInformation implements TokenEnhancer {
@@ -27,7 +27,6 @@ public class AditionalInformation implements TokenEnhancer {
 
 		info.put("name", employee.getName());
 		info.put("surname", employee.getSurname());
-		info.put("email", employee.getEmail());
 		
 		((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info);
 		
