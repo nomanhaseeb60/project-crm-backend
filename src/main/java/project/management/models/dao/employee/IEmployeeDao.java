@@ -1,4 +1,4 @@
-package project.management.models.dao;
+package project.management.models.dao.employee;
 
 import org.springframework.data.repository.CrudRepository;
 
