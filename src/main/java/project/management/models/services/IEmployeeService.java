@@ -1,4 +1,4 @@
-package project.management.models.services.employee;
+package project.management.models.services;
 
 import project.management.models.entities.Employee;
 

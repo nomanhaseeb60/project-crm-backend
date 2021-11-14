@@ -27,8 +27,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import project.management.models.entities.Employee;
 import project.management.models.entities.Role;
-import project.management.models.services.employee.IEmployeeService;
-import project.management.models.services.roles.IRoleService;
+import project.management.models.services.IEmployeeService;
+import project.management.models.services.IRoleService;
 
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController

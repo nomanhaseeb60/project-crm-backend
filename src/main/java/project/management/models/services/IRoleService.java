@@ -1,4 +1,4 @@
-package project.management.models.services.roles;
+package project.management.models.services;
 import java.util.List;
 
 import project.management.models.entities.Role;

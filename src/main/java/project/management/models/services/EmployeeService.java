@@ -1,4 +1,4 @@
-package project.management.models.services.employee;
+package project.management.models.services;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import project.management.models.dao.employee.IEmployeeDao;
+import project.management.models.dao.IEmployeeDao;
 import project.management.models.entities.Employee;
 
 @Service
